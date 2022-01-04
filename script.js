@@ -25,8 +25,8 @@ function calcColName(n) {
     }
     return str;
 }
-
-for (let i = 1; i <= 100; i++) {
+// column and rows
+for (let i = 1; i <= 150; i++) {
     let str = calcColName(i);
     $("#columns").append(`<div class="column-name">${str}</div>`);
     $("#rows").append(`<div class="row-name">${i}</div>`);
@@ -62,7 +62,7 @@ let defaultProperties = {
     "upStream": [],
     "downStream": []
 }
-
+//cells logic
 function loadNewSheet() {
     $("#cells").text("");
     for (let i = 1; i <= 100; i++) {
