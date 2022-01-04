@@ -26,7 +26,7 @@ function calcColName(n) {
     return str;
 }
 // column and rows
-for (let i = 1; i <= 150; i++) {
+for (let i = 1; i <= 100; i++) {
     let str = calcColName(i);
     $("#columns").append(`<div class="column-name">${str}</div>`);
     $("#rows").append(`<div class="row-name">${i}</div>`);
