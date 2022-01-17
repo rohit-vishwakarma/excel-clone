@@ -154,8 +154,7 @@ function addEventsToCells() {
         }
     })
 }
-//
-
+//top, bottom, left, right cells of a selected cell
 function getTopBottomLeftRight(rowId, colId) {
     let topCell = $(`#row-${rowId - 1}-col-${colId}`);
     let bottomCell = $(`#row-${rowId + 1}-col-${colId}`);
@@ -164,7 +163,7 @@ function getTopBottomLeftRight(rowId, colId) {
 
     return [topCell, bottomCell, leftCell, rightCell];
 }
-
+//unselect cells 
 function unselectCell(ele, e, topCell, bottomCell, leftCell, rightCell) {
     if (e.ctrlKey && $(ele).attr("contenteditable") == "false") {
         
@@ -186,7 +185,7 @@ function unselectCell(ele, e, topCell, bottomCell, leftCell, rightCell) {
         $(ele).removeClass("selected top-selected bottom-selected left-selected right-selected");
     }
 }
-
+//selected cell 
 function selectCell(ele, e, topCell, bottomCell, leftCell, rightCell, mouseSelection) {
     if (e.ctrlKey || mouseSelection) {
         
@@ -258,16 +257,16 @@ function changeHeader([rowId, colId]) {
     $("#font-size").val(data["font-size"]);
     $(".alignment.selected").removeClass("selected");
     $(`.alignment[data-type=${data.alignment}]`).addClass("selected");
-    addRemoveSelectFromFontStyle(data, "bold");
-    addRemoveSelectFromFontStyle(data, "italic");
-    addRemoveSelectFromFontStyle(data, "underlined");
+    addRemoveSelectFromFontStyle(data, "bold"); //for bold
+    addRemoveSelectFromFontStyle(data, "italic"); //for italic
+    addRemoveSelectFromFontStyle(data, "underlined"); //for underlined
     $("#fill-color-icon").css("border-bottom", `4px solid ${data.bgcolor}`);
     $("#text-color-icon").css("border-bottom", `4px solid ${data.color}`);
     $("#border").val(data["border"]);
     console.log(data.formula);
     $("#formula-input").text(data.formula);
 }
-
+//font styling 
 function addRemoveSelectFromFontStyle(data, property) {
     if (data[property]) {
         $(`#${property}`).addClass("selected");
@@ -325,7 +324,7 @@ $("#italic").click(function (e) {
 $("#underlined").click(function (e) {
     setFontStyle(this, "underlined","text-decoration", "underline"); 
 })
-
+//set the font style
 function setFontStyle(ele, property, key, value) {
     if ($(ele).hasClass("selected")) {
         $(ele).removeClass("selected");
@@ -509,7 +508,7 @@ function updateCellData(property, value) {
         saved = false;
     }
 }
-
+// for coloring of text and cells
 $(".color-pick").colorPick({
     'initialColor': '#TYPECOLOR',
     'allowRecent': true,
